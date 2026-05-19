@@ -1,33 +1,51 @@
 # SAM to BED Feature Annotation
 
-This repository contains a simple shell-based workflow for processing
-alignment outputs in SAM format and annotating genomic intervals using
-samtools and bedtools.
+This repository contains a shell-based bioinformatics workflow for processing alignment outputs in SAM format and annotating genomic intervals using samtools and bedtools.
 
-The script demonstrates common post-alignment steps used in NGS analysis,
-including format conversion and feature overlap annotation.
+The pipeline demonstrates common post-alignment processing steps used in next-generation sequencing (NGS) analysis workflows, including format conversion, sorting, genomic interval generation, and feature overlap annotation.
 
 ## Workflow
 
-- Convert SAM to BAM
-- Sort BAM file
-- Convert sorted BAM to BED
-- Intersect BED intervals with genomic features
+The workflow performs the following steps:
+
+1. Convert SAM alignment files to BAM format
+2. Sort BAM files for downstream analysis
+3. Convert sorted BAM files to BED interval format
+4. Annotate genomic intervals by intersecting sequencing reads with genomic feature annotations
 
 ## Inputs
 
-- SAM file containing aligned sequencing reads
-- BED file containing genomic features
+* `sequences.sam` — aligned sequencing reads in SAM format
+* `features.bed` — genomic feature annotations in BED format
 
-## Tools
+## Tools Used
 
-- samtools
-- bedtools
+* samtools
+* bedtools
+* Bash shell scripting
+
+## Biological Relevance
+
+This workflow reflects common preprocessing and annotation steps used in genomics and transcriptomics pipelines to associate aligned sequencing reads with known genomic regions or features.
 
 ## Usage
 
-1. Make sure samtools and bedtools are installed and available in your PATH.
-2. Make the script executable:
-   chmod +x SamBed.sh
-3. Run the script:
-   ./SamBed.sh
+Ensure `samtools` and `bedtools` are installed and available in your system PATH.
+
+Make the script executable:
+
+```bash
+chmod +x SamBed.sh
+```
+
+Run the workflow:
+
+```bash
+./SamBed.sh
+```
+
+## Output
+
+* Sorted BAM alignment file
+* BED interval file
+* Annotated BED file containing overlapping genomic features
